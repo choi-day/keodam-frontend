@@ -44,3 +44,18 @@ flutter {
 }
 
 def dotenv = new Properties()
+def envFile = file("keodam-frontend/assets/config/.env")
+
+if (envFile.exists()) {
+    envFile.withInputStream { stream -> dotenv.load(stream) }
+} else {
+    throw new FileNotFoundException("Could not find .env file")
+}
+
+defaultConfig{
+    def kakaoKey = dotenv['KAKAO_API_KEY']
+    if (kakaoKey == null){
+        throw new GradleException("KAKAO_API_KEY not found in .env file")
+    }
+    mainfestPlaceholders = [YOUR_NATIVE_APP_KEY: kakaoKey]
+}
