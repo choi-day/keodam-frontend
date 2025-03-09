@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:keodam_frontend/signup/view/AgreementScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,13 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      theme: ThemeData(fontFamily: 'Pretendard'),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        fontFamily: 'Pretendard'
+      ),
+      home: const AgreementScreen(),
       themeMode: ThemeMode.system,
     );
   }
