@@ -96,7 +96,7 @@ class _AgreementScreenState extends State<AgreementScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AgreementDetail_screen(
+                      builder: (context) => const AgreementDetailScreen(
                         title: AgreementText.privacyPolicyTitle,
                         content: AgreementText.privacyPolicyContent,
                       ),
@@ -114,7 +114,7 @@ class _AgreementScreenState extends State<AgreementScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AgreementDetail_screen(
+                      builder: (context) => const AgreementDetailScreen(
                         title: AgreementText.termsOfServiceTitle,
                         content: AgreementText.termsOfServiceContent,
                       ),
@@ -132,7 +132,7 @@ class _AgreementScreenState extends State<AgreementScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AgreementDetail_screen(
+                      builder: (context) => const AgreementDetailScreen(
                         title: AgreementText.eventNotificationTitle,
                         content: AgreementText.eventNotificationContent,
                       ),
