@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keodam_frontend/signup/view/agreement_screen.dart';
+import 'package:keodam_frontend/signup/presentation/screens/agreement_screen.dart';
 
 void main() {
   runApp(const MyApp());
