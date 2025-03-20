@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:keodam_frontend/const/colors.dart';
+import 'package:keodam_frontend/common/constants/colors.dart';
 
 class AgreementOption extends StatelessWidget {
   final int index;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:keodam_frontend/const/colors.dart';
+import 'package:go_router/go_router.dart';
+import 'package:keodam_frontend/common/constants/colors.dart';
 
 class AgreementDetailScreen extends StatelessWidget {
   final String title;
@@ -20,7 +21,7 @@ class AgreementDetailScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.chevron_left, color: MAIN_TEXT_COLOR),
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
         ),
       ),
@@ -38,7 +39,6 @@ class AgreementDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-
             Expanded(
               child: SingleChildScrollView(
                 child: Text(
@@ -49,7 +49,6 @@ class AgreementDetailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
             Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -58,7 +57,7 @@ class AgreementDetailScreen extends StatelessWidget {
                   height: 60,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      context.pop();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: MAIN_COLOR,
@@ -79,7 +78,7 @@ class AgreementDetailScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 30), // ✅ 하단 여백 조정
+            const SizedBox(height: 30),
           ],
         ),
       ),

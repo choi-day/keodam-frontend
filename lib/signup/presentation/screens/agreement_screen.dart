@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:keodam_frontend/const/colors.dart';
+import 'package:go_router/go_router.dart';
+import 'package:keodam_frontend/common/constants/colors.dart';
 import 'package:keodam_frontend/signup/data/constants/agreementText_constants.dart';
-import 'package:keodam_frontend/signup/presentation/screens/agreementDetail_screen.dart';
 import 'package:keodam_frontend/signup/presentation/widget/areement_widget.dart';
 
 class AgreementScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _AgreementScreenState extends State<AgreementScreen> {
           leading: IconButton(
             icon: const Icon(Icons.chevron_left, color: MAIN_TEXT_COLOR),
             onPressed: () {
-              Navigator.pop(context);
+              context.pop();
             },
           ),
         ),
@@ -62,8 +62,6 @@ class _AgreementScreenState extends State<AgreementScreen> {
                 ),
               ),
               const SizedBox(height: 30),
-
-              // ✅ "전체 동의" 배경색 변경
               Container(
                 padding: const EdgeInsets.all(0),
                 decoration: BoxDecoration(
@@ -86,22 +84,16 @@ class _AgreementScreenState extends State<AgreementScreen> {
                 ),
               ),
               const SizedBox(height: 40),
-
               AgreementOption(
                 index: 0,
                 text: '개인정보 수집 및 이용 동의 (필수)',
                 isSelected: selectedOptions[0],
                 onOptionTap: _onOptionTap,
                 onTextTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AgreementDetailScreen(
-                        title: AgreementText.privacyPolicyTitle,
-                        content: AgreementText.privacyPolicyContent,
-                      ),
-                    ),
-                  );
+                  context.push("/agreement/detail", extra: {
+                    'title': AgreementText.privacyPolicyTitle,
+                    'content': AgreementText.privacyPolicyContent,
+                  });
                 },
               ),
               const SizedBox(height: 15),
@@ -111,15 +103,10 @@ class _AgreementScreenState extends State<AgreementScreen> {
                 isSelected: selectedOptions[1],
                 onOptionTap: _onOptionTap,
                 onTextTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AgreementDetailScreen(
-                        title: AgreementText.termsOfServiceTitle,
-                        content: AgreementText.termsOfServiceContent,
-                      ),
-                    ),
-                  );
+                  context.push("/agreement/detail", extra: {
+                    'title': AgreementText.termsOfServiceTitle,
+                    'content': AgreementText.termsOfServiceContent,
+                  });
                 },
               ),
               const SizedBox(height: 15),
@@ -129,19 +116,13 @@ class _AgreementScreenState extends State<AgreementScreen> {
                 isSelected: selectedOptions[2],
                 onOptionTap: _onOptionTap,
                 onTextTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const AgreementDetailScreen(
-                        title: AgreementText.eventNotificationTitle,
-                        content: AgreementText.eventNotificationContent,
-                      ),
-                    ),
-                  );
+                  context.push("/agreement/detail", extra: {
+                    'title': AgreementText.eventNotificationTitle,
+                    'content': AgreementText.eventNotificationContent,
+                  });
                 },
               ),
               const Spacer(),
-
               Center(
                 child: SizedBox(
                   width: double.infinity,
