@@ -6,6 +6,8 @@ import 'package:keodam_frontend/icon/keodam_icons_icons.dart';
 import 'package:keodam_frontend/login/data/repository/kakaoLogin_controller.dart';
 import 'package:keodam_frontend/login/data/repository/googleLogin_controller.dart';
 
+import '../../data/repository/appleLogin_controller.dart';
+
 final dio = Dio();
 const secureStorage = FlutterSecureStorage();
 
@@ -55,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Image.asset("assets/images/googleLoginButton.png"),
                       ),
                       InkWell(
-                        onTap: () {kakaoLogin();},
+                        onTap: () {appleLogin();},
                         child: Image.asset("assets/images/appleLoginButton.png"),
                       ),
                       const Text("아직 계정이 없다면,\n버튼을 눌러 자동으로 회원가입으로 연결돼요" , style: TextStyle(color: SUB_TEXT_COLOR, fontSize: 12),)

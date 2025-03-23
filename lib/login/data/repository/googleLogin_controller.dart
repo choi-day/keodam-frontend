@@ -1,27 +1,7 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-// import 'package:google_sign_in/google_sign_in.dart';
-
-// Future<void> googleLogin() async{
-// //  await dotenv.load(fileName: ".env");
-//   // 1. 사용자 로그인
-// //  final GoogleSignInAccount? googleUser = await GoogleSignIn(clientId: dotenv.get("GOOGLE_CLIENT_ID")).signIn();
-//   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-//   // 2. 인증 정보 가져오기
-//   final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
-
-//   if (googleAuth != null) {
-//     // 3. Access Token과 ID Token 사용
-//     final String accessToken = googleAuth.accessToken!;
-//     final String idToken = googleAuth.idToken!;
-
-//     print("Access Token: $accessToken");
-//     print("ID Token: $idToken");
-//   }
-// }
-
+import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+final dio = Dio();
 Future<void> googleLogin() async {
   //final GoogleSignIn googleSignIn = GoogleSignIn(scopes: ['email', 'profile']);
   try {
@@ -44,6 +24,7 @@ Future<void> googleLogin() async {
     if (idToken != null) {
       print(idToken);
       print(accessToken);
+      await dio.post("http://keodam.kro.kr/auth/login", options: Options(headers: {"id_token": '${idToken}'}));
     } else {
       print("Failed to get ID Token");
     }
