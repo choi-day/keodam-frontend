@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:kakao_flutter_sdk/kakao_flutter_sdk_template.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:keodam_frontend/login/view/login_screen.dart';
+import 'package:keodam_frontend/login/presentation/view/login_screen.dart';
+
+import 'login/data/service/kakao_service.dart';
 
 void main() async{
-  await dotenv.load(fileName: 'assets/config/.env');
-  String? kakaoNativeAppKey = dotenv.env['KAKAO_API_KEY'];
-  String? javaScriptAppKey = dotenv.env['JAVASCRIPT_API_KEY'];
-
-  WidgetsFlutterBinding.ensureInitialized();
-
-  KakaoSdk.init(
-    nativeAppKey: kakaoNativeAppKey,
-    javaScriptAppKey: javaScriptAppKey,
-  );
+  await KakaoService.initialize();
+  //debugPaintSizeEnabled = true;
   runApp(const MyApp());
 }
 
