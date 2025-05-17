@@ -28,6 +28,19 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
+        //.env를 사용하기 위한
+        def APPLE_ADDMOB_ID = dotenv['APPLE_ADDMOB_ID']
+        def ANDROID_ADDMOB_ID = dotenv['ANDROID_ADDMOB_ID']
+        if (APPLE_ADDMOB_ID == null) {
+            throw GradleException("APPLE_ADDMOB_ID not fount in .env")
+        }
+
+        if (ANDROID_ADDMOB_ID == null) {
+            throw GradleException("ANDROID_ADDMOB_ID not fount in .env")
+        }
+        manifestPlaceholders = [APPLE_ADDMOB_ID: APPLE_ADDMOB_ID]
+        manifestPlaceholders = [ANDROID_ADDMOB_ID: ANDROID_ADDMOB_ID]
     }
 
     buildTypes {
@@ -41,4 +54,14 @@ android {
 
 flutter {
     source = "../.."
+}
+
+//.env파일을 androidManifest.xml에서 사용할 수 있도록
+def dotenv = Properties()
+def envFile = file("${rootProject.projectDir}/../assets/config/.env")
+if (envFile.exists()) {
+    envFile.withInputStream { stream -> dotenv.load(stream) }
+}
+else {
+    throw FileNotFoundException("Could not find .env file")
 }
